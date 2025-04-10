@@ -42,24 +42,67 @@ s.n. dasgupta
 ### Display the content of the files
 cat < file1
 ## OUTPUT
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ cat>file1
+chanchal singhavi
+c.k. shukla
+s.n. dasgupta
+sumit chakrobarty
 
+
+```
 
 
 cat < file2
 ## OUTPUT
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ cat<file2
+anil aggarwal
+barun sengupta
+c.k. shukla
+lalit chowdury
+s.n. dasgupta
 
+```
 
 # Comparing Files
 cmp file1 file2
 ## OUTPUT
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ cmp file1 file2
+file1 file2 differ: byte 1, line 1
+
+
+```
+
  
 comm file1 file2
  ## OUTPUT
-
+```
+base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ comm file1 file2
+	anil aggarwal
+	barun sengupta
+chanchal singhavi
+		c.k. shukla
+	lalit chowdury
+		s.n. dasgupta
+sumit chakrobarty
+```
  
 diff file1 file2
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ diff file1 file2
+1c1,2
+< chanchal singhavi
+---
+> anil aggarwal
+> barun sengupta
+2a4
+> lalit chowdury
+4d5
+< sumit chakrobarty
+```
 
 #Filters
 
@@ -82,17 +125,33 @@ cat > file22
 
 cut -c1-3 file11
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ cut -c1-3 file11
+Hel
+Thi
+```
 
 
 
 cut -d "|" -f 1 file22
 ## OUTPUT
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ cut -d "|" -f 1 file22
+1001 
+1002 
+1003 
+```
 
 
 
 cut -d "|" -f 2 file22
 ## OUTPUT
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ cut -d "|" -f 2 file22
+ Ram 
+ tom 
+ Joe 
+```
 
 
 cat < newfile 
@@ -107,40 +166,85 @@ hello world
  
 grep Hello newfile 
 ## OUTPUT
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ grep Hello newfile
+Hello world
 
+```
 
 
 grep hello newfile 
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ grep hello newfile
+hello world
+```
 
 
 
 grep -v hello newfile 
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ grep -v hello newfile
+Hello world
+```
 
 
 cat newfile | grep -i "hello"
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ cat newfile | grep -i "hello"
+Hello world
+hello world
+```
 
 
 
 cat newfile | grep -i -c "hello"
 ## OUTPUT
-
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ cat newfile | grep -i -c "hello"
+2
+```
 
 
 grep -R ubuntu /etc
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ grep -R ubuntu /etc
+/etc/apparmor.d/abstractions/ubuntu-email:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-email:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-email:  include if exists <abstractions/ubuntu-email.d>
+/etc/apparmor.d/abstractions/ubuntu-feed-readers:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-feed-readers:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-feed-readers:  include if exists <abstractions/ubuntu-feed-readers.d>
+/etc/apparmor.d/abstractions/ubuntu-bittorrent-clients:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-bittorrent-clients:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-bittorrent-clients:  include if exists <abstractions/ubuntu-bittorrent-clients.d>
+/etc/apparmor.d/abstractions/ubuntu-xterm:  include if exists <abstractions/ubuntu-xterm.d>
+/etc/apparmor.d/abstractions/ubuntu-browsers:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-browsers:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/gvfs-open:#   # needed for ubuntu-* abstractions
+/etc/apparmor.d/abstractions/gvfs-open:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/gvfs-open:#   include <abstractions/ubuntu-browsers>
+/etc/apparmor.d/abstractions/gvfs-open:#   include <abstractions/ubuntu-email>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/productivity:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/productivity:#   include <abstractions/ubuntu-helpers>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/mailto:  include <abstractions/ubuntu-email>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/mailto:  include <abstractions/ubuntu-console-email>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/mailto:  include <abstractions/ubuntu-gnome-terminal>
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/multimedia:# Users of this abstraction need to include the ubuntu-helpers abstraction
+/etc/apparmor.d/abstractions/ubuntu-browsers.d/multimedia:#   include <abstractions/ubuntu-helpers>
+```
 
 
 grep -w -n world newfile   
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ grep -w -n world newfile
+1:Hello world
+2:hello world
+```
 
 cat < newfile 
 ```
@@ -163,59 +267,106 @@ Linux is best in this World
  ```
 egrep -w 'Hello|hello' newfile 
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ egrep -w 'Hello|hello' newfile
+Hello world
+hello world
+```
 
 
 egrep -w '(H|h)ello' newfile 
 ## OUTPUT
-
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ egrep -w '(H|h)ello' newfile
+Hello world
+hello world
+```
 
 egrep -w '(H|h)ell[a-z]' newfile 
 ## OUTPUT
-
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ egrep -w '(H|h)ell[a-z]' newfile
+Hello world
+hello world
+```
 
 
 egrep '(^hello)' newfile 
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ egrep '(^hello)' newfile
+hello world
+```
 
 
 egrep '(world$)' newfile 
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ egrep '(world$)' newfile
+Hello world
+hello world
+world
+```
 
 
 egrep '(World$)' newfile 
 ## OUTPUT
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ egrep '(world$)' newfile
+Hello world
+hello world
+world
+```
 
 
 egrep '((W|w)orld$)' newfile 
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ egrep '((W|w)orld$)' newfile
+Hello world
+hello world
+world
+```
 
 
 egrep '[1-9]' newfile 
 ## OUTPUT
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ egrep '[1-9]' newfile
+Linux is world number 1 Unix is predecessor 
+```
 
 
 
 egrep 'Linux.*world' newfile 
 ## OUTPUT
-
+```
+base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ egrep 'Linux.*world' newfile
+Linux is world number 1 Unix is predecessor
+```
 
 egrep 'Linux.*World' newfile 
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ egrep 'Linux.*World' newfile
+```
 
 egrep l{2} newfile
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ egrep l{2} newfile
+Hello world
+hello world
+```
 
 
 egrep 's{1,2}' newfile
 ## OUTPUT 
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ egrep 's{1,2}' newfile
+Linux is world number 1 Unix is predecessor 
+Linux is best in this
+```
 
 
 cat > file23
@@ -234,75 +385,175 @@ cat > file23
 
 sed -n -e '3p' file23
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ sed -n -e '3p' file23
+1002 | tom | 5000 | Admin
+```
 
 
 sed -n -e '$p' file23
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ sed -n -e '$p' file23
+1001 | Ram | 10000 | HR
+```
 
 
 sed  -e 's/Ram/Sita/' file23
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ sed -e 's/Ram/Sita/' file23
+1001 | Sita | 10000 | HR
+1001 | Sita | 10000 | HR
+1002 | tom | 5000 | Admin
+1003 | Joe | 7000 | Developer
+1005 | Sam | 5000 | HR
+1004 | Sit | 7000 | Dev
+1003 | Joe | 7000 | Developer
+1001 | Sita | 10000 | HR
+```
 
 
 sed  -e '2s/Ram/Sita/' file23
 ## OUTPUT
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ sed -e '2s/Ram/Sita/' file23
+1001 | Ram | 10000 | HR
+1001 | Sita | 10000 | HR
+1002 | tom | 5000 | Admin
+1003 | Joe | 7000 | Developer
+1005 | Sam | 5000 | HR
+1004 | Sit | 7000 | Dev
+1003 | Joe | 7000 | Developer
+1001 | Ram | 10000 | HR
 
-
+```
 
 sed  '/tom/s/5000/6000/' file23
 ## OUTPUT
+```
 
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ sed '/tom/s/5000/6000/' file23
+1001 | Ram | 10000 | HR
+1001 | Ram | 10000 | HR
+1002 | tom | 6000 | Admin
+1003 | Joe | 7000 | Developer
+1005 | Sam | 5000 | HR
+1004 | Sit | 7000 | Dev
+1003 | Joe | 7000 | Developer
+1001 | Ram | 10000 | HR
+```
 
 
 sed -n -e '1,5p' file23
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ sed -n -e '1,5p' file23
+1001 | Ram | 10000 | HR
+1001 | Ram | 10000 | HR
+1002 | tom | 5000 | Admin
+1003 | Joe | 7000 | Developer
+1005 | Sam | 5000 | HR
+```
 
 
 sed -n -e '2,/Joe/p' file23
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ sed -n -e '2,/Joe/p' file23
+1001 | Ram | 10000 | HR
+1002 | tom | 5000 | Admin
+1003 | Joe | 7000 | Developer
+```
 
 
 
 sed -n -e '/tom/,/Joe/p' file23
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ sed -n -e '/tom/,/Joe/p' file23
+1002 | tom | 5000 | Admin
+1003 | Joe | 7000 | Developer
+```
 
 
 seq 10 
 ## OUTPUT
-
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ seq 10
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+```
 
 seq 10 | sed -n '4,6p'
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ seq 10 | sed -n '4,6p'
+4
+5
+6
+```
 
 
 seq 10 | sed -n '2,~4p'
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ seq 10 | sed -n '2,~4p'
+2
+3
+4
+```
 
 
 seq 3 | sed '2a hello'
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ seq 3 | sed '2a hello'
+1
+2
+hello
+3
+```
 
 
 seq 2 | sed '2i hello'
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ seq 2 | sed '2i hello'
+1
+hello
+2
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ seq 10 | sed '2,9c hello'
+1
+hello
+10
+```
 
 seq 10 | sed '2,9c hello'
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ sed -n '2,4{s/^/$/;p}' file23
+$1001 | Ram | 10000 | HR
+$1002 | tom | 5000 | Admin
+$1003 | Joe | 7000 | Developer
+```
 
 sed -n '2,4{s/^/$/;p}' file23
 ## OUTPUT
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ sed -n '2,4{s/$/*/;p}' file23
+1001 | Ram | 10000 | HR*
+1002 | tom | 5000 | Admin*
+1003 | Joe | 7000 | Developer*
+```
 
 
 
@@ -320,6 +571,11 @@ cat > file21
 ``` 
 sort file21
 ## OUTPUT
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ cat > file21
+1001 | Ram | 10000 | HR
+1002 | Ram | 10000 | HR
+```
 
 
 cat > file22
@@ -333,7 +589,15 @@ cat > file22
 ``` 
 uniq file22
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ cat > file21
+1001 | Ram | 10000 | HR
+1001 | Ram | 10000 | HR
+1002 | tom | 5000 | Admin
+1003 | Joe | 7000 | Developer
+1005 | Sam | 5000 | HR
+1004 | Sit | 7000 | Dev
+```
 
 
 #Using tr command
@@ -356,11 +620,27 @@ www. mrcet.... com
  ```
 cat urllist.txt | tr -d ' '
  ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ cat file23 | tr [:lower:] [:upper:]
+1001 | RAM | 10000 | HR
+1001 | RAM | 10000 | HR
+1002 | TOM | 5000 | ADMIN
+1003 | JOE | 7000 | DEVELOPER
+1005 | SAM | 5000 | HR
+1004 | SIT | 7000 | DEV
+1003 | JOE | 7000 | DEVELOPER
+1001 | RAM | 10000 | HR
+```
 
  
 cat urllist.txt | tr -d ' ' | tr -s '.'
 ## OUTPUT
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ cat urllist.txt | tr -d ' '
+www.yahoo.com
+www.google.com
+www.mrcet.com
+```
 
 
 
@@ -375,11 +655,31 @@ mv backup.tar backupdir
  
 tar -tvf backup.tar
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ tar -cvf backup.tar *
+file1
+file11
+file2
+file21
+file22
+file23
+newfile
+urllist.txt
+```
 
 tar -xvf backup.tar
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ tar -tvf backup.tar
+-rw-rw-r-- sec/sec          62 2025-04-10 16:27 file1
+-rw-rw-r-- sec/sec          29 2025-04-10 16:36 file11
+-rw-rw-r-- sec/sec          70 2025-04-10 16:28 file2
+-rw-rw-r-- sec/sec         151 2025-04-10 17:44 file21
+-rw-rw-r-- sec/sec          80 2025-04-10 16:39 file22
+-rw-rw-r-- sec/sec         205 2025-04-10 17:26 file23
+-rw-rw-r-- sec/sec          97 2025-04-10 17:18 newfile
+-rw-rw-r-- sec/sec          43 2025-04-10 17:46 urllist.txt
+```
 gzip backup.tar
 
 ls .gz
@@ -387,7 +687,9 @@ ls .gz
  
 gunzip backup.tar.gz
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ ls .gz
+```
  
 # Shell Script
 ```
@@ -397,7 +699,20 @@ echo 'echo Hello World‘; exit 0 >> my-script.sh
 chmod 755 my-script.sh
 ./my-script.sh
 ## OUTPUT
-
+```
+(base) sec@sec-ThinkPad-E15-Gen-4:~/charan$ cat > scriptest.sh
+\#!/bin/sh
+echo “File name is $0 ”
+echo "File name is " `basename $0`
+echo “First arg. is ” $1
+echo “Second arg. is ” $2
+echo “Third arg. is ” $3
+echo “Fourth arg. is ” $4
+echo 'The $@ is ' $@
+echo 'The $\# is ' $1#
+echo 'The $$ is ' $$
+ps
+```
  
 cat << stop > herecheck.txt
 ```
