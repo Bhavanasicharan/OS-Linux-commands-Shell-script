@@ -4,8 +4,7 @@ Operating systems Lab exercise
 Linux commands-Shell scripting
 
 # Name: B Charan Reddy
-# Reg No: 21224240026
-
+# Reg No: 212224240026
 # AIM:
 To practice Linux Commands and Shell Scripting
  
